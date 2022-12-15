@@ -1,0 +1,31 @@
+<html>
+<head>
+<script>
+function mensaje(){
+const coche  = {
+  marca: 'volkswagen',
+  modelo: 'vento',
+  get nombreCompleto() {
+    return `${this.marca} ${this.modelo}`
+  },
+  set nombreCompleto(valor) {
+    const palabras = valor.split(' ')
+    this.marca = palabras[0] || ''
+    this.modelo = palabras[1] || ''
+  },
+  get nombreEspia() {
+    return `${this.modelo}, ${this.marca} ${this.modelo}`
+  }
+}
+
+alert(coche.nombreEspia)
+coche.nombreCompleto = 'Audi A3'
+alert(coche.nombreEspia)
+}
+</script>
+</head>
+
+<button id='msg' onclick=mensaje();>Mensaje</button>
+
+
+</html>
