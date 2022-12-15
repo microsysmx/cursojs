@@ -2,21 +2,34 @@
 <head>
 <script>
 function mensaje(){
-const carrito = {
-  productos: [{
-    nombre: 'papel higienico',
-    unidades: 4,
-    precio: 5,
-  },
-  get precioTotal() {
-    for (let i = 0; i < this.productos.length; i++) {
+  const carrito = {
+    productos: [{
+      nombre: 'papel higienico',
+      unidades: 4,
+      precio: 5,
+    },
+    {
+      nombre: 'coca',
+      unidades: 3,
+      precio: 30,
+    },
+    {
+      nombre: 'pan',
+      unidades: 4,
+      precio: 5,
+    }],
+    get precioTotal() {
+      let precio = 0;
+      for (let i = 0; i < this.productos.length; i++) {
+        precio += this.productos[i].unidades * this.productos[i].precio
+      }
+      return precio;
 
     }
-    return precio;
-
+   
   }
- 
-}
+
+  console.log( carrito.precioTotal )
 }
 </script>
 </head>

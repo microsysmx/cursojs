@@ -1,0 +1,29 @@
+<html>
+<head>
+<script>
+function mensaje(){
+const miObjeto = { propiedad: "Propiedad original..." }
+Object.defineProperties(miObjeto, {
+  propiedad1: {
+    value: true,
+    writable: true
+  },
+  propiedad2: {
+    value: "Cadena de texto",
+    writable: true
+  }
+});
+alert(miObjeto.propiedad);
+miObjeto.propiedad = "Propiedad original Modificada";
+alert(miObjeto.propiedad);
+//alert(miObjeto.propiedad2);
+miObjeto.propiedad2 = "Cadena de texto... ¿modificada?";
+alert(miObjeto.propiedad2);
+}
+</script>
+</head>
+
+<button id='msg' onclick=mensaje();>Mensaje</button>
+
+
+</html>
