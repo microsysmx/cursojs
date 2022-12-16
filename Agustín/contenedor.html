@@ -27,14 +27,13 @@
             let dato = ""
             if(li_sel == 1){
                 dato = document.getElementById("lista1").getElementsByTagName("li")[0].innerHTML + " " + document.getElementById("lista1").getElementsByTagName("li")[1].innerHTML;
-                document.getElementById("contenido_li_seleccionado").innerText = dato
             }
             else if(li_sel == 2){
                 dato = document.getElementById("lista2").getElementsByTagName("li")[0].innerHTML + " " + document.getElementById("lista2").getElementsByTagName("li")[1].innerHTML;
-                document.getElementById("contenido_li_seleccionado").innerText = dato;
+                
             }
 
- 
+            document.getElementById("contenido_li_seleccionado").innerText = dato;
             console.log( dato );
 
 
