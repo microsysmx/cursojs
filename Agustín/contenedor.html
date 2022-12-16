@@ -23,17 +23,19 @@
     <script>
         boton.addEventListener('click', function(event) {
             let li_sel = document.getElementById("li_seleccionado").value;
-            console.log( document.getElementById("lista" + li_sel).getElementsByTagName("li") );
-
+            
+            let dato = ""
             if(li_sel == 1){
-                document.getElementById("contenido_li_seleccionado").innerText = document.getElementById("lista1").getElementsByTagName("li")[0] + " " + document.getElementById("lista1").getElementsByTagName("li")[1];
+                dato = document.getElementById("lista1").getElementsByTagName("li")[0].innerHTML + " " + document.getElementById("lista1").getElementsByTagName("li")[1].innerHTML;
+                document.getElementById("contenido_li_seleccionado").innerText = dato
             }
             else if(li_sel == 2){
-                document.getElementById("contenido_li_seleccionado").innerText = document.getElementById("lista2").getElementsByTagName("li")[0] + " " + document.getElementById("lista2").getElementsByTagName("li")[1];
+                dato = document.getElementById("lista2").getElementsByTagName("li")[0].innerHTML + " " + document.getElementById("lista2").getElementsByTagName("li")[1].innerHTML;
+                document.getElementById("contenido_li_seleccionado").innerText = dato;
             }
 
  
-
+            console.log( dato );
 
 
         });
