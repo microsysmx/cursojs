@@ -2,7 +2,12 @@
 <html>
   
 <body>
-    <div id="contendor">
+     <button id="boton">Click aqui</button>
+     <input id="li_seleccionado">
+
+     
+
+    <div id="contenedor">
         <ul id="lista1">
             <li "opcion1 de la lista 1" />
             <li "opcion2 de la lista 1" />
@@ -12,11 +17,16 @@
             <li "opcion2 de la lista 2" />
         </ul>
     </div>
+
+    <div id="contenido_li_seleccionado"/>
   
     <script>
-       document.getElementById("lista1").getElementsByTagName("li");
-       document.getElementsByTagName("div")[0].getElementsByTagName('li');
-       console.log( document.getElementById("contenedor").getElementsByTagName('li') );
+        boton.addEventListener('click', function(event) {
+            let li_sel = document.getElementById("li_seleccionado").value;
+            console.log( document.getElementById("lista" + li_sel).getElementsByTagName("li") );
+            document.getElementById("contenido_li_seleccionado").innerText = document.getElementById("lista" + li_sel).getElementsByTagName("li")[0] + " " + document.getElementById("lista" + li_sel).getElementsByTagName("li")[1];
+        });
+
     </script>
 </body>
   
