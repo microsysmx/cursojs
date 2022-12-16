@@ -1,0 +1,14 @@
+	<html>
+	<head></head>
+	<body>
+	<div id ="contenido">	
+		<p>Un Párrafo</p>
+		<p>Otro párrafo</p>
+    </div>
+	<script>
+		var nuevo_parrafo = document.createElement('p').appendChild(document.createTextNode('Parrafo nuevo'));
+		var segundo_parrafo = document.getElementById('contenido').getElementsByTagName('p')[1];
+		document.getElementById('contenido').insertBefore(nuevo_parrafo,segundo_parrafo);
+	</script>
+	</body>
+	<html>
