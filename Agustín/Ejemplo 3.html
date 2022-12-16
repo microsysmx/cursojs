@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  
+<body>
+    <button id="try">Click aquí</button>
+
+    <input id="caja1" />
+    <input id="caja2" />
+    <h1 id="text"></h1>
+    <table id="tabla">
+        
+    </table>
+
+
+    <script>
+    document.getElementById("try").addEventListener("click", function(){
+    document.getElementById("tabla").innerText = document.getElementById("caja1").value + " " + document.getElementById("caja2").value;
+});
+    </script>
+</body>
+  
+</html>  
