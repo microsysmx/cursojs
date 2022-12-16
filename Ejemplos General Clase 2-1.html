@@ -1,0 +1,32 @@
+<html>
+<head>
+
+</head>
+<body>
+<div id="papa">
+  <button id="hijo">Click aqui</button>
+</div>
+<script>
+const padre = document.getElementById('papa');
+const hijo = document.getElementById('hijo');
+
+hijo.addEventListener('click', function(event) {
+  alert('El evento hijo ha llegado a la fase de bubbling');
+});
+
+papa.addEventListener('click', function(event) {
+  alert('El evento Papa ha llegado a la fase de bubbling');
+  console.log(event);
+});
+
+hijo.addEventListener('click', function(event) {
+  alert('El evento Hijo ha llegado a la fase de captura');
+}, true);
+
+papa.addEventListener('click', function(event) {
+  alert('El evento Papa ha llegado a la fase de captura');
+}, true);
+</script>
+</body>
+</html>
+

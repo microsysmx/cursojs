@@ -1,0 +1,24 @@
+<html>
+<head>
+<script>
+//Código asíncrono llamada HTTP
+function simuladorAsincrono(){
+const llamadaHTTP = () => {
+  setTimeout(() => {
+    console.log('Ha pasado un segundo y medio');
+  }, 1500);
+}
+console.log('Inicio del programa');
+llamadaHTTP();
+console.log('Fin del programa')
+}
+</script>
+</head>
+<body>
+<button id='msg' onclick=simuladorAsincrono();>Simulador asincrono</button>
+  
+</body>
+
+
+
+</html>
