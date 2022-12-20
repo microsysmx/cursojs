@@ -1,0 +1,12 @@
+    function alerta(){
+        alert(this);
+    }
+    
+    window.onload = function (){
+        var cuerpo = document.getElementsByTagName('body')[0];
+        var elDiv = document.getElementById('elDiv');
+        var botoncurso = document.getElementById('botoncurso');
+        cuerpo.addEventListener('click',alerta,true);
+        elDiv.addEventListener('click',alerta,true);
+        botoncurso.addEventListener('click',alerta,true);
+    }
