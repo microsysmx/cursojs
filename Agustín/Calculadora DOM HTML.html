@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+    <style type="text/css">
+        body{
+            font-family: sans-serif;
+            text-align: center;
+        }
+        #calculadora{
+            font: bold 14px Arial, sans-serif;
+            background-color: #9DD2EA;
+            margin: 0 auto;
+            padding: 20px 20px 10px;
+            width: 286px;
+            border-radius: 3px;
+        }
+
+        .parteSuperior, .teclas{
+            overflow: hidden;
+        }
+
+        div.parteSuperior div.pantalla{
+            background-color: rgba(0, 0, 0, 0.2);
+            color: #fff;
+            float: right;
+            width: 180px;
+            height: 40px;
+            font-size: 17px;
+            border-radius: 3px;
+            padding: 0 10px;
+            text-align: right;
+            letter-spacing: 1px;
+            line-height: 40px;
+        }
+
+        .parteSuperior span.limpiar, .teclas span, #modificado span{
+            background-color: #ffffff;
+            color: #888888;
+            cursor: pointer;
+            float: left;
+            border-radius: 3px;
+            height: 36px;
+            width: 66px;
+            margin: 0 7px 11px 0;
+            line-height: 36px;
+            text-align: center;
+            transition: all 0.4s ease 0s;
+        }
+
+        .parteSuperior span.limpiar{
+            background-color: #FF7C87;
+        }
+
+        .teclas span.operador{
+            margin-right: 0;
+            background-color: #FFDAB9;
+        }
+
+        .parteSuperior span.limpiar:hover, .teclas span:hover, #modificar span:hover{
+            background-color: #141b4d;
+            color: #FFFFFF;
+        }
+        .teclas span#contenedorTeclas{
+            width: 100%;
+        }
+
+        #contenedor div#marcaNumero, #contenedor div#marcaOperadores{
+            transition: all 0.4s ease 0s;
+            width: 140px;
+            display: inline-block;
+            height: 36px;
+            border-radius: 3px;
+            line-height: 36px;
+            margin: 0px;
+            background: rgb(202, 60, 60);
+            cursor: pointer;
+            color: white;
+        }
+
+        #contenedor div#marcaNumero{
+            margin-right: -2px;
+        }
+
+        #contenedor div#marcaNumero:hover, #contenedor div#marcaOperadores:hover{
+            background: rgb(66, 184, 221);
+        }
+
+        #modificado{
+            padding: 0 0 0 5px;
+            height: 46px;
+            background-color: white;
+            border-radius: 3px;
+            border: none;
+        }
+
+        #modificado span{
+            margin: 5px 4px 11px 0;
+            background: rgb(202, 60, 60);
+            color: white;
+        }
+    </style>
+    <script type="text/javascript">
+        var listaNodoPantalla, listaNodoNumero, listaNumeroOperador;
+        function pulsada(tecla){
+            listaNodoPantalla = document.getElementsByClassName('pantalla');
+            var nodoTextoPantalla = listaNodoPantalla[0].childNodes[0];
+            switch(tecla){
+                case "C":
+                    nodoTextoPantalla.nodeValue = "";
+                    break;
+                case "=":
+                    var resultado = eval(nodoTextoPantalla.nodeValue);
+                    nodoTextoPantalla.nodeValue = resultado;
+                    break;
+                default:
+                    nodoTextoPantalla.nodeValue = nodoTextoPantalla.nodeValue + tecla;
+
+            }
+        }
+        function marcaDeNumeros(){
+            listaNodoNumero = document.getElementsByClassName("numero");
+            for (var i = 0; i < listaNodoNumero.length; i++) {
+                listaNodoNumero[i].style.backgroundColor = "black";
+                listaNodoNumero[i].style.color = "white";
+            }
+        }
+        function marcaDeOperadores(){
+            listaNumeroOperador = document.querySelectorAll("#calculadora .teclas span.operador, #calculdora .teclas span.igual");
+            for (var i = 0; i < listaNumeroOperador.length; i++) {
+                listaNumeroOperador[i].style.backgroundColor = "yellow";
+                listaNumeroOperador[i].style.color = "red";
+            }
+        }
+        function modificacion(valor){
+            var valorStyle;
+            if(valor == "letraC"){
+                valorStyle = document.querySelectorAll("#calculadora span.limpiar");
+                valorStyle[0].style.backgroundColor = "red";
+                valorStyle[0].style.color = "white";
+            }
+            else if(valor == "punto"){
+                valorStyle = document.querySelectorAll("#calculadora span.punto");
+                valorStyle[0].style.backgroundColor = "#8B008B";
+                valorStyle[0].style.color = "white";
+
+            }
+            else if(valor == "pant"){
+                valorStyle = document.querySelectorAll("#calculadora div.pantalla");
+                valorStyle[0].style.backgroundColor = "#00008B";
+                valorStyle[0].style.color = "white";
+            }
+        }
+        function resetGeneral(){
+            var numeroStyle = document.querySelectorAll("#calculadora .teclas span.numero, #calculadora .teclas span.punto");
+            for (var i = 0; i < numeroStyle.length; i++) {
+                numeroStyle[i].style.backgroundColor = "#FFFFFF";
+                numeroStyle[i].style.color = "#888888";
+            };
+
+            var operadoresStyle = document.querySelectorAll("#calculadora .teclas span.operador");
+            for (var i = 0; i < operadoresStyle.length; i++) {
+                operadoresStyle[i].style.backgroundColor = "#FFDAB9";
+                operadoresStyle[i].style.color = "#88888888";
+            };
+            var pantallaStyle = document.querySelectorAll("#calculadora .parteSuperior div.pantalla")
+            pantallaStyle[0].style.backgroundColor = "rgba(0, 0, 0, 0.2)";
+
+            var limpiarStyle = document.querySelectorAll("#calculadora .teclas span.igual");
+            limpiarStyle[0].style.backgroundColor = "#F1FF92";
+            limpiarStyle[0].style.color = "#888888";
+
+            var limpiarStyle = document.querySelectorAll("#calculadora .parteSuperior span.limpiar");
+            limpiarStyle[0].style.backgroundColor = "#FF7C87";
+            limpiarStyle[0].style.color = "#888888";
+        }
+    </script>
+</head>
+<body>
+	<header>
+		<h2>Curso de JavaScript</h2>
+		<h3>Ejercicio de acceder a objetos DOM</h3>
+	</header>
+	<div id="calculadora">
+        <div class="parteSuperior">
+            <span class="limpiar" onclick="pulsada('C')">C</span>
+            <div class="pantalla"> </div> <!--Espacio para que exista nodeValue-->
+ 		</div>     
+        <div class="teclas">
+            <!-- operadores y otras teclas -->
+            <span class="numero" onclick="pulsada('7')">7</span>
+            <span class="numero" onclick="pulsada('8')">8</span>
+            <span class="numero" onclick="pulsada('9')">9</span>
+            <span class="operador" onclick="pulsada('+')">+</span>
+            <span class="numero" onclick="pulsada('4')">4</span>
+            <span class="numero" onclick="pulsada('5')">5</span>
+            <span class="numero" onclick="pulsada('6')">6</span>
+            <span class="operador" onclick="pulsada('-')">-</span>
+            <span class="numero" onclick="pulsada('1')">1</span>
+            <span class="numero" onclick="pulsada('2')">2</span>
+            <span class="numero" onclick="pulsada('3')">3</span>
+            <span class="operador" onclick="pulsada('/')">÷</span>
+            <span class="numero" onclick="pulsada('0')">0</span>
+            <span class="punto" onclick="pulsada('.')">.</span>
+            <span class="igual" onclick="pulsada('=')">=</span>
+            <span class="operador" onclick="pulsada('*')">x</span>
+        </div>
+        <div id="modificado">
+        	<span onclick="modificacion('letraC')">C</span>
+        	<span onclick="modificacion('punto')">.</span>	
+        	<span onclick="modificacion('pant')">Pant</span>
+        	<span onclick="resetGeneral()">Reset</span>
+        </div>
+         <div id="contenedor">
+        	<div id="marcaNumero" onclick="marcaDeNumeros()">Marca numeros</div>
+        	<div id="marcaOperadores" onclick="marcaDeOperadores()">Marca operadores</div>	
+        </div>    
+	</div>
+</body>
+</html>
