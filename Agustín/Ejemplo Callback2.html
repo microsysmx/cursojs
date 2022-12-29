@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<style type="text/css">
+    table{
+        width: 100%;
+        border: 1px solid #ccc;
+    }
+    th, td{
+        width: 25%;
+        text-align: center;
+        vertical-align: top;
+        border: 1px solid #ccc;
+    }
+</style>
+
+<body>
+<form id="miFormulario">
+    <label>Introduzca su nombre:</label><input type="texto" id="nombre" />
+    <label>Introduzca su correo:</label><input type="texto" id="correo" />
+    
+</form>
+<br /><br />
+<button id="miBoton">Cargar</button>
+<br /><br />
+
+<table id="miTabla">
+    <tr>
+        <th>ID</td>
+        <th>Nombre</td>
+        <th>Correo</td>
+    </tr>
+    <!--
+    <tr>
+        <td id="idUsuario"></td>
+        <td id="nombreTabla"></td>
+        <td id="correoTabla"></td>
+    </tr>
+-->
+</table>
+
+
+<script>
+    var contador = 1;
+    const boton = document.getElementById('miBoton');
+    const tabla = document.getElementById('miTabla');
+    
+    boton.addEventListener('click', function(){
+        var nombreUsuario = document.getElementById('nombre').value
+        var nombreCorreo = document.getElementById('correo').value
+        const fila = document.createElement('tr');
+        const columnaId = document.createElement('td');
+        const columnaNombre = document.createElement('td');
+        const columnaCorreo = document.createElement('td');
+
+        const nuevoId = document.createTextNode(`${contador}`);
+        const nuevoUsuario = document.createTextNode(`${nombreUsuario}`);
+        const nuevoCorreo = document.createTextNode(`${nombreCorreo}`);
+
+        tabla.append(fila);
+        fila.append(columnaId);
+        
+
+        setTimeout(function() {
+                    columnaId.append(nuevoId);
+        }, 1500)
+
+
+
+
+        fila.append(columnaNombre);
+        columnaNombre.append(nuevoUsuario);
+
+        fila.append(columnaCorreo);
+        columnaCorreo.append(nuevoCorreo);
+        contador += 1;
+        
+        //document.getElementById("nombreTabla").innerHTML = nombreResultado;
+
+   })
+</script>
+</body>
+
+</html>
