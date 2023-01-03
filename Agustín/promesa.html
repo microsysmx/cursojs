@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+<button onclick="iniciar1()">Cargar</button>
+
+<button onclick="iniciar2()">Cargar2</button>
+
+<button onclick="iniciar3()">Cargar3</button>
+<script>
+
+    function iniciar3(){
+        let urls = [
+            'iliakan',
+            'mojombo',
+            'remy'
+        ];
+
+
+        let requests = urls.map(url => fetch(`https://api.github.com/users/${url}`));
+
+        Promise.all(requests)
+        .then(responses => {
+            for(let response of responses){
+                alert(`${response.url}: ${response.status}`)
+            }
+            return responses;
+        })
+        .then(responses => Promise.all(responses.map(r => r.json())))
+        .then(users => users.forEach(user => alert(user.name)));
+
+
+
+
+
+        /*
+        let urls = [
+            'https://api.github.com/users/iliakan',
+            'https://api.github.com/users/mojombo',
+            'https://api.github.com/users/remy'
+        ];
+
+        let requests = urls.map(url => fetch(url));
+
+        Promise.all(requests)
+        .then(responses => responses.forEach(
+            response => alert(`${response.url}: ${response.status}`)
+            ));
+
+*/
+
+
+/*
+        fetch('http://www.microsys.com.mx/usuariosgit.json')
+        .then(response => response.json())
+        .then(user => fetch(`https://api.github.com/users/${user.name}`))
+        .then(function(response){
+            return response.text();
+        })
+        .then(function(text){
+            alert(text);
+        })
+*/
+
+
+        //.then(response => console.log(response.json() ) );
+
+
+/*
+        fetch('http://www.microsys.com.mx/usuario1.json')
+        .then(response => response.json())
+        .then(user => alert(user.name));
+        
+*/
+
+        /*
+        fetch('http://www.microsys.com.mx/usuario.json')
+        .then(function(response){
+            return response.text();
+        })
+        .then(function(text){
+            alert(text);
+        })
+        */
+
+    }
+
+
+     function iniciar2(){
+        let promesa = new Promise(function(resolve, reject){
+            setTimeout(() =>resolve(1), 1000);
+        });
+
+        promesa.then(function(result){
+            alert(result);
+            return result * 2;
+        });
+
+        promesa.then(function(result){
+            alert(result);
+            return result * 2;
+        });
+
+        promesa.then(function(result){
+            alert(result);
+            return result * 2;
+        });
+
+        promesa.then(function(result){
+            alert(result);
+            return result * 2;
+        });
+
+    }
+
+
+
+    function iniciar1(){
+        new Promise(function(resolve, reject){
+            setTimeout(() =>resolve(1), 1000);
+        }).then(function(result){
+            alert(result);
+            return result * 2;
+        }).then(function(result){
+            alert(result);
+            return result * 2;
+        }).then(function(result){
+            alert(result);
+            return result * 2;
+        }).then(function(result){
+            alert(result);
+            return result * 2;
+        });
+
+
+
+
+
+        /*
+        const promesa1 = new Promise((resolve, reject) => {
+            setTimeout(() =>resolve("Promesa resuelta 1"), 1000)
+        });
+
+        const promesa2 = new Promise((resolve, reject) => {
+            setTimeout(() =>resolve("Promesa resuelta 2"), 1000)
+        });
+
+        promesa1.then(alert);
+        promesa2.then(alert);
+        */
+    }
+
+
+</script>
+
+</body>
+
+</html>
